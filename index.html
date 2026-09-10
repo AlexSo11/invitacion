@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Invitación Especial - Birthday Party</title>
+  <title>Birthday Party | Invitación Especial</title>
   
   <!-- Tipografías de Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Variables de estilo */
     :root {
-      --bg-color: #FAF6F0;
-      --card-bg: #FFFFFF;
+      --bg-color: #f6f0ea;
+      --card-bg: #ffffff;
       --text-main: #332C2B;
       --accent-color: #8C4343;
-      --accent-light: #F4EAE1;
+      --accent-light: #f4eae1;
       --font-title: 'Cormorant Garamond', serif;
       --font-body: 'Montserrat', sans-serif;
     }
@@ -28,39 +27,57 @@
       padding: 0;
     }
 
+    /* Fondo con imagen aesthetic / textura suave */
     body {
       background-color: var(--bg-color);
+      /* Imagen de fondo sutil (patrón de acuarela neutra) */
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(244, 234, 225, 0.8) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(230, 215, 205, 0.6) 0%, transparent 40%),
+        url('https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?q=80&w=1000&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       color: var(--text-main);
       font-family: var(--font-body);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 20px;
-    }
-
-    /* Tarjeta principal */
-    .card {
-      background: var(--card-bg);
-      max-width: 420px;
-      width: 100%;
-      border-radius: 20px;
-      padding: 40px 28px;
-      text-align: center;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(140, 67, 67, 0.12);
-      animation: fadeIn 1.2s ease-in-out;
+      padding: 30px 15px;
       position: relative;
     }
 
-    /* Adorno decorativo superior */
-    .card::before {
-      content: "✦";
-      display: block;
-      font-size: 1.2rem;
+    /* Capa suave para difuminar la imagen de fondo */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(250, 246, 240, 0.75);
+      backdrop-filter: blur(5px);
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--card-bg);
+      max-width: 440px;
+      width: 100%;
+      border-radius: 24px;
+      padding: 45px 30px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(140, 67, 67, 0.15);
+      animation: fadeIn 1.2s ease-in-out;
+      overflow: hidden;
+    }
+
+    .bow-icon {
+      font-size: 1.8rem;
       color: var(--accent-color);
-      margin-bottom: 12px;
-      letter-spacing: 4px;
+      margin-bottom: 10px;
+      display: inline-block;
     }
 
     .subtitle {
@@ -68,27 +85,75 @@
       text-transform: uppercase;
       letter-spacing: 3px;
       color: #888;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .title {
       font-family: var(--font-title);
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 400;
       font-style: italic;
       color: var(--accent-color);
-      line-height: 1.1;
+      line-height: 1;
       margin-bottom: 24px;
     }
 
     .divider {
-      width: 40px;
-      height: 1px;
-      background-color: var(--accent-color);
-      margin: 0 auto 24px auto;
-      opacity: 0.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px auto;
+      color: var(--accent-color);
+      opacity: 0.6;
     }
 
+    .divider::before, .divider::after {
+      content: "";
+      height: 1px;
+      width: 40px;
+      background-color: var(--accent-color);
+    }
+
+    /* Cuenta regresiva */
+    .countdown-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #999;
+      margin-bottom: 10px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .time-box {
+      background: var(--accent-light);
+      padding: 10px 8px;
+      border-radius: 12px;
+      flex: 1;
+      max-width: 75px;
+    }
+
+    .time-box .number {
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent-color);
+    }
+
+    .time-box .label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+    }
+
+    /* Información General */
     .info-section {
       margin-bottom: 24px;
     }
@@ -98,58 +163,103 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       color: #777;
-      margin-bottom: 4px;
-    }
-
-    .info-value {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--text-main);
+      margin-bottom: 6px;
     }
 
     .time-date {
       font-family: var(--font-title);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: var(--text-main);
     }
 
-    /* Paleta de vestimenta */
-    .palette-container {
-      display: flex;
+    .info-value {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      font-weight: 400;
+    }
+
+    /* Botones Cutes */
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
+      width: 100%;
       margin-top: 10px;
-    }
-
-    .swatch {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.08);
-    }
-
-    /* Botón de Mapa */
-    .btn-map {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 12px 24px;
+      padding: 14px 20px;
       background-color: var(--accent-color);
       color: #FFF;
       text-decoration: none;
       font-size: 0.8rem;
+      font-weight: 500;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       border-radius: 30px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(140, 67, 67, 0.2);
+      box-shadow: 0 4px 15px rgba(140, 67, 67, 0.2);
     }
 
-    .btn-map:hover {
+    .btn-action:hover {
       background-color: #6d3333;
       transform: translateY(-2px);
     }
 
-    /* Animación de entrada */
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--accent-light);
+    }
+
+    /* Itinerario */
+    .itinerary {
+      text-align: left;
+      margin: 25px 0;
+      padding: 20px;
+      background: #faf6f0;
+      border-radius: 16px;
+    }
+
+    .itinerary-title {
+      text-align: center;
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      color: var(--accent-color);
+      margin-bottom: 15px;
+    }
+
+    .itinerary-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(140, 67, 67, 0.15);
+    }
+
+    .itinerary-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Paleta de colores */
+    .palette-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid #FFF;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
@@ -159,42 +269,127 @@
 <body>
 
   <div class="card">
-    <p class="subtitle">Estas invitado a celebrar</p>
+    <div class="bow-icon">🎀</div>
+    <p class="subtitle">Estás cordialmente invitado/a a mi</p>
     <h1 class="title">Birthday Party</h1>
 
-    <div class="divider"></div>
+    <!-- Cuenta Regresiva -->
+    <p class="countdown-title">Faltan tan solo:</p>
+    <div class="countdown">
+      <div class="time-box">
+        <div class="number" id="days">00</div>
+        <div class="label">Días</div>
+      </div>
+      <div class="time-box">
+        <div class="number" id="hours">00</div>
+        <div class="label">Hs</div>
+      </div>
+      <div class="time-box">
+        <div class="number" id="minutes">00</div>
+        <div class="label">Min</div>
+      </div>
+      <div class="time-box">
+        <div class="number" id="seconds">00</div>
+        <div class="label">Seg</div>
+      </div>
+    </div>
 
+    <div class="divider">✦ ✦ ✦</div>
+
+    <!-- Detalles del Evento -->
     <div class="info-section">
-      <p class="info-label">Fecha y Hora</p>
+      <p class="info-label">📅 ¿Cuándo?</p>
       <p class="time-date">19 de Diciembre, 2027</p>
-      <p class="info-value">2:30 PM</p>
+      <p class="info-value">A las 2:30 PM</p>
     </div>
 
     <div class="info-section">
-      <p class="info-label">Ubicación</p>
-      <p class="info-value">Paseo de los Artistas 1216A</p>
+      <p class="info-label">📍 ¿Dónde?</p>
+      <p class="info-value"><strong>Paseo de los Artistas 1216A</strong></p>
       <a 
         href="https://maps.google.com/?cid=9950386319637510619" 
         target="_blank" 
-        class="btn-map"
+        class="btn-action btn-secondary"
       >
-        📍 Ver en Google Maps
+        📍 Ver Ubicación en Maps
       </a>
     </div>
 
-    <div class="info-section" style="margin-bottom: 0;">
-      <p class="info-label">Código de Vestimenta</p>
-      <p class="info-value" style="font-size: 0.9rem;">Formal / Semiformal</p>
-      
+    <!-- Mini Itinerario -->
+    <!--<div class="itinerary">
+      <div class="itinerary-title">✨ Programa del Día ✨</div>
+      <div class="itinerary-item">
+        <span>2:30 PM</span>
+        <span>Recepción & Welcome Drinks 🥂</span>
+      </div>
+      <div class="itinerary-item">
+        <span>4:00 PM</span>
+        <span>Comida & Brindis 🍽️</span>
+      </div>
+      <div class="itinerary-item">
+        <span>6:00 PM</span>
+        <span>Pastel & Fotos 🎂</span>
+      </div>
+    </div>-->
+
+    <!-- Dresscode -->
+    <div class="info-section">
+      <p class="info-label">👗 Código de Vestimenta</p>
+      <p class="info-value">Formal / Semi-formal</p>
       <div class="palette-container">
-        <div class="swatch" style="background-color: #5C4033;" title="Café"></div>
-        <div class="swatch" style="background-color: #FAF0E6;" title="Crema"></div>
-        <div class="swatch" style="background-color: #B0C4DE;" title="Azul Pastel"></div>
-        <div class="swatch" style="background-color: #D8BFD8;" title="Lila"></div>
-        <div class="swatch" style="background-color: #FFB6C1;" title="Rosa Pastel"></div>
+        <div class="swatch" style="background-color: #5C4033;" title="Chocolate"></div>
+        <div class="swatch" style="background-color: #FAF0E6;" title="Cream"></div>
+        <div class="swatch" style="background-color: #B0C4DE;" title="Soft Blue"></div>
+        <div class="swatch" style="background-color: #D8BFD8;" title="Lilac"></div>
+        <div class="swatch" style="background-color: #FFB6C1;" title="Soft Pink"></div>
       </div>
     </div>
+
+    <div class="divider">✦</div>
+
+    <!-- Confirmación por WhatsApp -->
+    <div class="info-section" style="margin-bottom: 0;">
+      <p class="info-label">¿Nos acompañas?</p>
+      <a 
+        href="https://wa.me/5212345678901?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20tu%20cumple%20✨" 
+        target="_blank" 
+        class="btn-action"
+      >
+        💌 Confirmar Asistencia
+      </a>
+    </div>
+
   </div>
 
+  <!-- JavaScript para la Cuenta Regresiva -->
+  <script>
+  // Fecha objetivo: 19 de diciembre de 2027 a las 14:30:00
+  const targetDate = new Date(2026, 11, 19, 14, 30, 0).getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const difference = targetDate - now;
+
+    if (difference > 0) {
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = String(days).padStart(2, '0');
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+    } else {
+      document.getElementById("days").innerText = "00";
+      document.getElementById("hours").innerText = "00";
+      document.getElementById("minutes").innerText = "00";
+      document.getElementById("seconds").innerText = "00";
+    }
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
 </body>
 </html>
