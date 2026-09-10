@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación Especial - Birthday Party</title>
+  
+  <!-- Tipografías de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* Variables de estilo */
+    :root {
+      --bg-color: #FAF6F0;
+      --card-bg: #FFFFFF;
+      --text-main: #332C2B;
+      --accent-color: #8C4343;
+      --accent-light: #F4EAE1;
+      --font-title: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Tarjeta principal */
+    .card {
+      background: var(--card-bg);
+      max-width: 420px;
+      width: 100%;
+      border-radius: 20px;
+      padding: 40px 28px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(140, 67, 67, 0.12);
+      animation: fadeIn 1.2s ease-in-out;
+      position: relative;
+    }
+
+    /* Adorno decorativo superior */
+    .card::before {
+      content: "✦";
+      display: block;
+      font-size: 1.2rem;
+      color: var(--accent-color);
+      margin-bottom: 12px;
+      letter-spacing: 4px;
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .title {
+      font-family: var(--font-title);
+      font-size: 2.8rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent-color);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background-color: var(--accent-color);
+      margin: 0 auto 24px auto;
+      opacity: 0.5;
+    }
+
+    .info-section {
+      margin-bottom: 24px;
+    }
+
+    .info-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text-main);
+    }
+
+    .time-date {
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      color: var(--text-main);
+    }
+
+    /* Paleta de vestimenta */
+    .palette-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .swatch {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* Botón de Mapa */
+    .btn-map {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 24px;
+      background-color: var(--accent-color);
+      color: #FFF;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(140, 67, 67, 0.2);
+    }
+
+    .btn-map:hover {
+      background-color: #6d3333;
+      transform: translateY(-2px);
+    }
+
+    /* Animación de entrada */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <p class="subtitle">Estas invitado a celebrar</p>
+    <h1 class="title">Birthday Party</h1>
+
+    <div class="divider"></div>
+
+    <div class="info-section">
+      <p class="info-label">Fecha y Hora</p>
+      <p class="time-date">19 de Diciembre, 2027</p>
+      <p class="info-value">2:30 PM</p>
+    </div>
+
+    <div class="info-section">
+      <p class="info-label">Ubicación</p>
+      <p class="info-value">Paseo de los Artistas 1216A</p>
+      <a 
+        href="https://maps.google.com/?cid=9950386319637510619" 
+        target="_blank" 
+        class="btn-map"
+      >
+        📍 Ver en Google Maps
+      </a>
+    </div>
+
+    <div class="info-section" style="margin-bottom: 0;">
+      <p class="info-label">Código de Vestimenta</p>
+      <p class="info-value" style="font-size: 0.9rem;">Formal / Semiformal</p>
+      
+      <div class="palette-container">
+        <div class="swatch" style="background-color: #5C4033;" title="Café"></div>
+        <div class="swatch" style="background-color: #FAF0E6;" title="Crema"></div>
+        <div class="swatch" style="background-color: #B0C4DE;" title="Azul Pastel"></div>
+        <div class="swatch" style="background-color: #D8BFD8;" title="Lila"></div>
+        <div class="swatch" style="background-color: #FFB6C1;" title="Rosa Pastel"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
