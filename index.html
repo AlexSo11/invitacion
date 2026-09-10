@@ -8,7 +8,7 @@
   <!-- Tipografías de Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -30,7 +30,6 @@
     /* Fondo con imagen aesthetic / textura suave */
     body {
       background-color: var(--bg-color);
-      /* Imagen de fondo sutil (patrón de acuarela neutra) */
       background-image: 
         radial-gradient(circle at 10% 20%, rgba(244, 234, 225, 0.8) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(230, 215, 205, 0.6) 0%, transparent 40%),
@@ -88,6 +87,7 @@
       margin-bottom: 6px;
     }
 
+    /* Única tipografía diferente */
     .title {
       font-family: var(--font-title);
       font-size: 3rem;
@@ -140,8 +140,8 @@
     }
 
     .time-box .number {
-      font-family: var(--font-title);
-      font-size: 1.5rem;
+      font-family: var(--font-body);
+      font-size: 1.2rem;
       font-weight: 600;
       color: var(--accent-color);
     }
@@ -167,8 +167,9 @@
     }
 
     .time-date {
-      font-family: var(--font-title);
-      font-size: 1.6rem;
+      font-family: var(--font-body);
+      font-size: 1.2rem;
+      font-weight: 600;
       color: var(--text-main);
     }
 
@@ -178,7 +179,7 @@
       font-weight: 400;
     }
 
-    /* Botones Cutes */
+    /* Botones */
     .btn-action {
       display: inline-flex;
       align-items: center;
@@ -213,35 +214,6 @@
 
     .btn-secondary:hover {
       background-color: var(--accent-light);
-    }
-
-    /* Itinerario */
-    .itinerary {
-      text-align: left;
-      margin: 25px 0;
-      padding: 20px;
-      background: #faf6f0;
-      border-radius: 16px;
-    }
-
-    .itinerary-title {
-      text-align: center;
-      font-family: var(--font-title);
-      font-size: 1.3rem;
-      color: var(--accent-color);
-      margin-bottom: 15px;
-    }
-
-    .itinerary-item {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      padding: 6px 0;
-      border-bottom: 1px dashed rgba(140, 67, 67, 0.15);
-    }
-
-    .itinerary-item:last-child {
-      border-bottom: none;
     }
 
     /* Paleta de colores */
@@ -298,14 +270,12 @@
 
     <!-- Detalles del Evento -->
     <div class="info-section">
-      <p class="info-label">📅 ¿Cuándo?</p>
-      <p class="time-date">19 de Diciembre, 2027</p>
-      <p class="info-value">A las 2:30 PM</p>
+      <p class="subtitle"><strong>19 de Diciembre, 2026</strong></p>
+      <p class="subtitle">A las 2:30 PM</p>
     </div>
 
     <div class="info-section">
-      <p class="info-label">📍 ¿Dónde?</p>
-      <p class="info-value"><strong>Paseo de los Artistas 1216A</strong></p>
+      <p class="subtitle">Paseo de los Artistas 1216A</p>
       <a 
         href="https://maps.google.com/?cid=9950386319637510619" 
         target="_blank" 
@@ -318,7 +288,7 @@
     <!-- Dresscode -->
     <div class="info-section">
       <p class="info-label">👗 Código de Vestimenta</p>
-      <p class="info-value">Formal / Semi-formal</p>
+      <p class="subtitle">Formal / Semi-formal</p>
       <div class="palette-container">
         <div class="swatch" style="background-color: #5C4033;" title="Chocolate"></div>
         <div class="swatch" style="background-color: #FAF0E6;" title="Cream"></div>
@@ -333,33 +303,33 @@
 
   <!-- JavaScript para la Cuenta Regresiva -->
   <script>
-  // Fecha objetivo: 19 de diciembre de 2027 a las 14:30:00
-  const targetDate = new Date(2026, 11, 19, 14, 30, 0).getTime();
+    // Fecha objetivo
+    const targetDate = new Date(2026, 11, 19, 14, 30, 0).getTime();
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const difference = targetDate - now;
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
 
-    if (difference > 0) {
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      document.getElementById("days").innerText = String(days).padStart(2, '0');
-      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-    } else {
-      document.getElementById("days").innerText = "00";
-      document.getElementById("hours").innerText = "00";
-      document.getElementById("minutes").innerText = "00";
-      document.getElementById("seconds").innerText = "00";
+        document.getElementById("days").innerText = String(days).padStart(2, '0');
+        document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+      } else {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+      }
     }
-  }
 
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-</script>
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
